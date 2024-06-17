@@ -10,14 +10,16 @@
     
      <link rel="icon" href="img/livro.ico" />
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/emprestimo.css">
     <link rel="stylesheet" href="css/crud.css">
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/records.css">
     <link rel="stylesheet" href="css/modal.css">
+   
+    
+    
 
-
-    <title>Biblioteca Escolar</title>
+    <title>Biblioteca Seduc</title>
 </head>
 
 
@@ -62,7 +64,6 @@
             </ul><!--nav-links-->
             </div><!--menu-items-->
         </nav>
-    
 
         <section class="dashboard">
             <div class="top">
@@ -111,7 +112,7 @@
                         <div class="overview">
                             <div class="title">
                                 <i class="bi bi-person-rolodex"></i>
-                                <span class="text">Livros</span>
+                                <span class="text">Emprestimos</span>
                             </div><!--title-->
                             <div class="wdaSever" style=" white-space: nowrap;">
                                 <li class="breadcrumb-item"><a
@@ -119,68 +120,81 @@
                                         href="Dahsboard.html">Biblioteca Escolar</a></li>
                                 <li class="breadcrumb-item"><a
                                         style="text-decoration: none !important; color: rgb(99, 99, 99); font-size: 12px; margin-left: 2%;"
-                                        href="Livros.html">&nbsp> Livros</a></li>
+                                        href="Emprestimos.html">&nbsp> Empréstimos</a></li>
                             </div>
                         </div><!--overview-->
                         <div id="lupa-grid">    
-                            <button type="button" class="button blue mobile" id="cadastrarLivro">Cadastrar Novo Livro</button>
+                            <button type="button" class="button blue mobile" id="cadastrarCliente">Novo Empréstimo</button>
                         </div>  
                         </br> 
                            
-                            <table id="tableLivro" class="records">
+                            <table id="tableEmprestimo" class="records">
                                 <thead>
                                     <tr>
-                                        <th>Código</th>
-                                        <th>Nome</th>
-                                        <th>Categoria</th>
-                                        <th>Editora</th>
-                                        <th>Autor</th>
+                                        <th>Código Empréstimo</th>
+                                        <th>Nome do Usuario</th>
+                                        <th>Livro alugado</th>
+                                        <th>Data do Empréstimo</th>
+                                        <th>Data da Devolução</th>
                                         <th>Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                    
                                 </tbody>
                             </table>
-                            <!-- MODAL APAGAR -->
-                            <div class="modal" id="modal2">
-                                <div class="modal-content">
-                                    <header class="modal-header">
-                                        <h2>Excluir Livro</h2>
-                                        <span class="modal-close" id="modalClose2">&#10006;</span>
-                                    </header>
-                                    <div id='avisoDelete'>
-                                        <!-- aviso de delete -->
-                                    </div>
-                                    <footer class="modal-footer">
-                                        <button id="apagar" class="button red">Apagar</button>
-                                        <button id="cancelar2" class="button blue">Cancelar</button>
-                                    </footer>
-                                </div>
-                            </div>
-                    
-                            <!-- MODAL CRIAR E EDITAR -->
-                            <div class="modal" id="modal">
-                                <div class="modal-content">
-                                    <header class="modal-header">
-                                        <h2>Novo Livro</h2>
-                                        <span class="modal-close" id="modalClose">&#10006;</span>
-                                    </header>
-                                    <form id="form" class="modal-form">
-                                        <input type="number" id="codigo" class="modal-field" placeholder="Código do Livro" required>
-                                        <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Nome do Livro" required>
-                                        <input type="date" id="ano" class="modal-field" placeholder="Ano Publicação do Livro" required>
-                                        <input type="text" id="categoria" class="modal-field" placeholder="Categoria do Livro" required>
-                                        <input type="text" id="editora" class="modal-field" placeholder="Editora do Livro" required>
-                                        <input type="text" id="isbn" class="modal-field" placeholder="ISBN do Livro" required>
-                                        <input type="text" id="autor" class="modal-field" placeholder="Autor do Livro" required>
-                                    </form>
-                                    <footer class="modal-footer">
-                                        <button id="salvar" class="button green">Salvar</button>
-                                        <button id="cancelar" class="button blue">Cancelar</button>
-                                    </footer>
-                                </div>
-                            </div>
+                <!-- MODAL APAGAR -->
+            <div class = "modal" id="modal">
+                <div class = "modal-content">
+                    <header class="modal-header">
+                        <h2>Novo Emprestimo</h2>
+                        <span class="modal-close" id="modalClose">&#10006;</span>
+                    </header>
+                    <form id="form" class="modal-form">
+                    <label for = "m-livro-alug">Livro:</label></br>
+                    <select id = "m-livro-alug">
+                    <option value="">Selecione o Livro:</option>
+                    </select></br>
+
+                    <label for = "m-usuario">Usuário</label></br>
+                    <select id = "m-usuario">
+                        <option value="">Selecione o Usuário:</option>
+                    </select></br>
+
+                    <label for = "m-data-aluguel">Data do Empréstimo</label>
+                    <input id = "m-data-aluguel" type = "date" required/>
+
+                    <label for = "m-prev-data">Previsão de Devolução</label>
+                    <input id = "m-prev-data" type = "date" required/>
+            
+                    </form>
+                    <footer class="modal-footer">
+                        <button id="salvar" class="button green">Salvar</button>
+                        <button id="cancelar" class="button blue"><a href="Emprestimos.html">Cancelar</a></button>
+                    </footer>
+
+                </div>
+            </div>
+
+                            <!--
+                            <div class="form-group">
+                                <label for="exampleInputCountry">País</label>
+                                <select class="form-control" id="exampleInputCountry" name="country">
+                                  <option selected="selected" value="" >Selecione um Usuário</option>
+                                  <option value="United States">Aluno</option>
+                                  <option value="United Kingdom">Funcionario</option>
+                                </select>
+
+                                <label for="exampleInputCountry">País</label>
+                                <select class="form-control" id="exampleInputCountry" name="country">
+                                  <option selected="selected" value="" >Selecione um Livro</option>
+                                  <option value="United States">Aluno</option>
+                                  <option value="United Kingdom">Funcionario</option>
+                                </select>
+                              </div>
+                            -->
+
+
+
 
                     </div><!--activity-->
                 </div><!--scroll-->
@@ -189,7 +203,8 @@
         </section>
     </div> <!--corpo-->
 </body>
+
 <script src="js/main.js"></script>
-<script src="js/livros.js"></script>
+<script src="js/crud.js"></script>
 
 </html>
